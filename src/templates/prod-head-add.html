@@ -1,0 +1,51 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="btn-group">
+    <a href="{{ url_for('report') }}">Dashboard </a> &nbsp;
+    <span class="text-muted"> > Productivity Heads</span>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p id="msg" class="alert alert-success">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="col-sm-12">
+            <form method="post" action="{{ url_for('prod_head_insert') }}">
+                <div class="mb-3 mt-3">
+                    <input type="text" placeholder="Project Name" class="form-control" id="project_name" name="project_name">
+                </div>
+                <div class="mb-3 mt-3">
+                    <textarea type="text" placeholder="Short Description" class="form-control" id="short_desc" name="short_desc"></textarea>
+                </div>
+                <div class="mb-3 mt-3">
+                    <input type="date" class="form-control" id="start_date" placeholder="Starting Date" name="start_date">
+                </div>
+                <div class="mb-3">
+                    <input type="date" class="form-control" id="end_date" placeholder="Ending Date" name="end_date">
+                </div>
+                <div class="mb-3 mt-3">
+                    <select class="form-control" id="status" name="status">
+                        <option value="0">Not Started</option>
+                        <option value="1">Started</option>
+                        <option value="2">On Going</option>
+                        <option value="3">Completed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

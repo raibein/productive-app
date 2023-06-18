@@ -1,0 +1,49 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="btn-group">
+    <a href="{{ url_for('report') }}">Dashboard </a> &nbsp;
+    <span class="text-muted"> > Edit Report</span>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <p id="msg" class="alert alert-success">
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </p>
+            <p>
+                <form method="post" action="/dashboard/employee-detail/update/{{ data['id']}}">
+                    <div class="mb-3 mt-3">
+                        <select class="form-control" id="role" name="role">
+                            <option value="user" {% if 'user' in data['role']: %}selected{% endif %}>User Role</option>
+                            <option value="admin" {% if 'admin' in data['role']: %}selected{% endif %}>Admin Role</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" placeholder="Full Name" class="form-control" id="full_name" name="full_name" value="{{ data['full_name'] }}">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id="username" placeholder="Employee Username" name="username" value="{{ data['username'] }}">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" value="{{ data['email'] }}">
+                    </div>
+                    <input type="hidden" class="form-control" id="id" placeholder="ID" name="id" value="{{ data['id'] }}">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </p>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

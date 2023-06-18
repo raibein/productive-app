@@ -1,0 +1,41 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="btn-group">
+    <a href="{{ url_for('report') }}">Dashboard </a> &nbsp;
+    <span class="text-muted"> > Home</span>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p id="msg" class="alert alert-success">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="col-sm-12">
+
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div><br/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}

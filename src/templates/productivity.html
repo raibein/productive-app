@@ -1,0 +1,109 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="btn-group">
+    <a href="{{ url_for('productivity_detail') }}">Dashboard </a> &nbsp;
+    <span class="text-muted"> > Productivity</span>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <p id="msg" class="alert alert-success">
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </p>
+        </div>
+        <div class="col-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Task Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+                {% if (data|length) == 0 %}
+                    <tr>
+                        <td colspan="4" class="text-center">No Data Found</td>
+                    </tr>
+                {% else %}
+                    {% for project in projects %}
+                        <tr>
+                            <td colspan="4">
+                                <b>Project Name : </b>{{ project['project_name'] }} ( <i>{{ project['start_date'] }} - {{ project['end_date'] }}</i> )
+                            </td>
+                        </tr>
+                        {% for r in data %}
+                            {% if r['user_id'] == session['user_id'] %}
+                                {% if project['id'] == r['project_id'] %}
+                                    <tr>
+                                        <td>{{ r['task_name'] }}</td>
+                                        <td>{{ r['start_date_time'] }}</td>
+                                        <td>{{ r['end_date_time'] }}</td>
+                                        <td>
+                                            {% if r['status'] == 0 %}
+                                                Not Started
+                                            {% elif r['status'] == 1 %}
+                                                Started
+                                            {% elif r['status'] == 2 %}
+                                                On Going
+                                            {% elif r['status'] == 3 %}
+                                                Completed
+                                            {% else %}
+                                                Left
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+        <div class="col-6">
+            <p class="text-center"><b>Progress Bar</b></p>
+            <canvas id="completed_incompleted" width="550px" height="300px"></canvas>              
+        </div>
+    </div>
+</div>
+
+
+<!-- Start : Chart Diagram -->
+<script>
+    const ctx = document.getElementById('completed_incompleted');
+
+    let json_data = JSON.parse( {{ testObj | tojson }} );
+
+    // alert([json_data]);
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+        labels: ['Completed', 'Started', 'On Going', 'Left', 'Not Started'],
+        datasets: [{
+            label: '# of task',
+            data: [ {{completed | count}}, {{started | count}}, {{ongoing | count}}, {{left | count}}, {{notstarted | count}} ],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+</script>
+<!-- End : Chart Diagram -->
+
+{%endblock%}
