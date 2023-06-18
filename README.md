@@ -1,6 +1,6 @@
 # Flask Developer Productive Application
 
-## Pre-requirements
+## Pre-requisite
 1. Install `pip`
 2. Install `python`
 
