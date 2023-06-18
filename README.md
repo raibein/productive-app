@@ -39,13 +39,20 @@ For the user -> Login to the admin dashboard -> go to the `Empoloyee Detail` Fin
 `username and password are same`
 
 ## Application Detail
-There is the common dashboard for both types of users but only depends on who logged and get the authenticate.
+There are the two different users one is the admin and another is the employee. The application use the common 
+dashboard for both types of users but only depends on who logged and get the authenticate.
 
 The concept here is for the admin is to create the Projects, Tasks and New Employees. After creating the project, 
 the project must be ongoing, i.e processing state, so the task can create also the user can assign for this task.
 That means, in the applicaiton `Employee Detail`, `Project Head`, and `Task Head` are the creation, update, delete, 
 and get the list and status of the per head. The delete of employee and project cannot be possible if those are
 assign to the task. Also the edit and delete are disabled if the tasks are completed state.
+
+The employee can start the task and as per the task going on they can also update as ongoing state and finally 
+completed state. So the can will close. But they can also left the task if they could not handle it and by admin
+the task can reassign to another employee.
+
+The report will generate employee working progress and task completion. Also there is the project base report.
 
 ## Update Application (follow up new version)
 The application can also changes various way to improve. In the users perspective they can only have their own username 
