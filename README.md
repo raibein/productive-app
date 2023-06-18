@@ -6,8 +6,8 @@
 
 ## Add to environment file (.env) file
 `add this two lines to .env file`
-export SECRET_KEY="<Any_Secret_Key>"
-export SQLALCHEMY_DB_URI="sqlite:///data.db"
+1. export SECRET_KEY="<Any_Secret_Key>"
+2. export SQLALCHEMY_DB_URI="sqlite:///data.db"
 
 ## Create the virtual environment
 1. Command : python3 -m venv venv
