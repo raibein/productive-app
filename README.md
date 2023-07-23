@@ -81,3 +81,22 @@ dashboard and implement their job to be done. Also there are the separated nav b
 
 Also in the creating the task, it can be separated and assign the task to the user but during the creating the task the user can
 assign the task which also save time and effor I felt duing the building the application.
+
+
+# Deploy on Heroku
+
+
+## Pre-requisite
+`For macbook to install heroku cli`
+1. brew tap heroku/brew && brew install heroku
+
+## Login to Heroku
+1. heroku login
+
+## If the project is not created, create the project in Heroku
+1. heroku create <app_name>
+`eg: heroku create productive-app`
+
+## Deploy code to Heroku by git
+1. git push heroku <branch_name>
+`eg: git push heroku main`
