@@ -100,3 +100,9 @@ assign the task which also save time and effor I felt duing the building the app
 ## Deploy code to Heroku by git
 1. git push heroku <branch_name>
 `eg: git push heroku main`
+
+## Open add from Heroku
+1. command: heroku open
+
+## Get logs from Heroku
+1. command: heroku logs --tail
