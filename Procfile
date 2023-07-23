@@ -1,1 +1,1 @@
-web: gunicorn ../productive-app:app
+web: gunicorn ../:app
