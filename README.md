@@ -6,8 +6,8 @@
 
 ## Add to environment file (.env) file
 `add this two lines to .env file`
-1. export SECRET_KEY="<Any_Secret_Key>"
-2. export SQLALCHEMY_DB_URI="sqlite:///data.db"
+1. SECRET_KEY="<Any_Secret_Key>"
+2. SQLALCHEMY_DB_URI="sqlite:///data.db"
 
 ## Create the virtual environment
 1. Command : python3 -m venv venv
@@ -53,22 +53,6 @@ completed state. So the can will close. But they can also left the task if they 
 the task can reassign to another employee.
 
 The report will generate employee working progress and task completion. Also there is the project base report.
-
-## Update Application (follow up new version)
-The application can also changes various way to improve. In the users perspective they can only have their own username 
-and password who provided them by the admin. This should be change as the user must change their password by themself or 
-have to authenticate to create their own username and password. There is also missing the team for the group of the users. 
-This can also build with team like developers, qa, managers and so on. The task can also be reopen if there are the bugs 
-in them and this task can review from the admin or leas. The sharing dashboard can be seperated. Tracking the change even 
-by admin rights who has changed for example to assign the different user for the task. Add the pagination  if the list 
-is going too long. The reports are also need to generate more for example to create the charts of per projects status, 
-individual user's progressing stat, duration of completing each task detail, the percentage of capacity of the user 
-to complete the task and so on.
-
-## Understanding of Problem
-Try to understand the problem before start any project. Research and collect the ideas. Pointing and list them all. Roadmap 
-on those ideas. Then start to build them. During building the application I have been correcting and improving them for 
-example the table structure. The different dashboard to the role base users. The visualization of ther users and the admin.
 
 ## Interesting Facts
 During developing the appliction interesting fact is the code structure using the MVC pattern and scale the application, also easy 
